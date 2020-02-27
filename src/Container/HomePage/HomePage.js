@@ -36,6 +36,13 @@ class HomePage extends Component {
             });
     };
 
+    reserveRoom = id => {
+        return axios
+            .patch(`http://localhost:5000/room/reserve/${id}`)
+            .catch(err => {
+                console.error(err);
+            });
+    };
     toggleDangerAlert() {
         const {toggleDangerAlert} = this.props;
 
@@ -127,7 +134,16 @@ class HomePage extends Component {
                                     {
                                         localStorage.token ?
                                             <div className={'Control_Btn Reserve'}>
-                                                Reserve
+                                                <div
+                                                    onClick={() => {
+                                                        this.reserveRoom(room.id).then(() => {
+                                                            this.componentDidMount()
+                                                        })
+                                                    }}
+                                                >
+                                                    Reserve
+                                                </div>
+
                                             </div> : ""
                                     }
                                     {
