@@ -18,6 +18,14 @@ export default class RoomInfo extends Component {
             });
     };
 
+    reserveRoom = id =>{
+        return axios
+            .patch(`http://localhost:5000/room/reserve/${id}`)
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
 
     render() {
         const {nameRoom, square, amount, park, about, price, id,status_id, Admin} = this.props;
@@ -65,14 +73,32 @@ export default class RoomInfo extends Component {
                     </div>
 
                     </div>
+
                     {
-                        localStorage.token && status_id===2 ?
+                        localStorage.token && status_id ===2 ?
                             <div className={'Control_Btn Reserve'}>
-                                Reserve
+
+
+                                <div
+
+                                    onClick={() => {
+                                        this.reserveRoom(id).then(() => {
+
+                                        })
+                                    }}
+                                >
+
+                                    Reserve{id}
+                                </div>
+
+
+
+
                             </div> : <div className={"Reserved"}>
                                 This room is reserved
                             </div>
                     }
+
                     {
                         Admin === `/Admin` && localStorage.token && status_id===2 ?
 
