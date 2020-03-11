@@ -8,9 +8,9 @@ import {Footer} from "../../Components/Footer/Footer";
 import {connect} from "react-redux";
 import {Room} from "../../actions/getRoom";
 import Photo from '../../assets/westindtla.jpg'
-import RoomList from "../../Components/RoomList/RoomList";
 import './HomePage.css'
 import axios from "axios";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class HomePage extends Component {
     constructor(props) {
@@ -93,11 +93,27 @@ class HomePage extends Component {
         })
     };
 
+    deleteRoom = id => {
+        return axios
+            .delete(`http://localhost:5000/room/${id}`)
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
+    reserveRoom = id => {
+        return axios
+            .patch(`http://localhost:5000/room/reserve/${id}`)
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
     render() {
         const pushHomePage = this.props.history;
+        const {ShowCreateRoom} = this.state;
         const Admin = this.props.location.pathname;
         const Rooms = this.props.rooms;
-        const {ShowCreateRoom} = this.state;
         const HideBtnAddRoom = ShowCreateRoom ? 'addRoom' : 'Hide';
         const ShowBoxCreateRoom = ShowCreateRoom ? 'Hide' : 'createRoom';
 
@@ -111,10 +127,96 @@ class HomePage extends Component {
                     src={Photo}
                     alt="Photo"
                 />
-                <RoomList
-                    Rooms={Rooms}
-                    Admin={Admin}
-                />
+                {
+                    localStorage.token ? Rooms.map(room => {
+                        return (
+                            <div className={'Main'}>
+                                <li className={'RoomCart'}>
+                                    <div className={'Room-Photo'}>
+                                        {/*Тут має бути фотка кімнати!*/}
+                                    </div>
+                                    <div className={'Main_info_Room'}>
+                                        <div className={'Name-Room'}>{room.nameRoom}</div>
+                                        <div className={'Param_Room'}>Площа: {room.square} ( м2
+                                            ) {10.764 * room.square} (
+                                            фут2 )
+                                        </div>
+                                        <div className={'display-flex'}>
+                                            <HotelIcon/>
+                                            <div className={'Param_Room'}> {room.amount}</div>
+                                            <LocalParkingIcon className={'margin'}/>
+                                            <div className={'Param_Room'}> {room.park}</div>
+                                        </div>
+                                        <div className={'About_Room'}>
+                                            {room.about}
+                                        </div>
+                                        <div className={'Some_Options'}>
+                                            <div className={'display-flex'}>
+                                                <CheckCircleOutlineIcon/>
+                                                <div className={'Param_Room'}>Free Wifi</div>
+                                            </div>
+                                            <div className={'display-flex'}>
+                                                <CheckCircleOutlineIcon/>
+                                                <div className={'Param_Room'}>TV</div>
+                                            </div>
+                                            <div className={'display-flex'}>
+                                                <CheckCircleOutlineIcon/>
+                                                <div className={'Param_Room'}>Mini Bar</div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <div className={'Price-Box'}>
+                                            24h from: <div className={'Price_Room'}>{room.price} UAH
+                                        </div>
+
+                                        </div>
+                                        {
+                                            localStorage.token && room.status_id === 2 ?
+                                                <div
+                                                    className={'Control_Btn Reserve'}
+                                                    onClick={() => {
+                                                        this.reserveRoom(room.id).then();
+                                                        this.componentDidMount();
+
+                                                    }}
+                                                >
+                                                    Reserve
+                                                </div> : <div
+                                                    className={"Reserved"}
+                                                >
+                                                    This room is reserved
+                                                </div>
+                                        }
+                                        {
+                                            Admin === `/Admin` && localStorage.token && room.status_id === 2 ?
+
+                                                <div className={'Control_Room'}>
+                                                    <button
+                                                        className={`Control_Btn Delete`}
+                                                        onClick={() => {
+                                                            this.deleteRoom(room.id).then(() => {
+
+                                                            });
+                                                            this.componentDidMount();
+
+                                                        }}
+                                                    >
+                                                        Delete {room.id}
+                                                    </button>
+
+                                                </div> : ''
+                                        }
+                                    </div>
+                                </li>
+                            </div>
+                        )
+                    }) : <div className={'loading_Room'}>
+                        <CircularProgress/>
+                    </div>
+                }
 
                 {
                     this.props.location.pathname === `/Admin` && localStorage.token ?
