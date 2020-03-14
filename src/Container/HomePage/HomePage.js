@@ -121,20 +121,19 @@ class HomePage extends Component {
             <div>
                 <Header pushHomePage={pushHomePage}/>
 
-                {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
                 <img
                     className={'Photo_Box'}
                     src={Photo}
                     alt="Photo"
                 />
                 {
-                    localStorage.token ? Rooms.map(room => {
+                    localStorage.token ? Rooms.map((room) => {
                         return (
                             <div className={'Main'}>
                                 <li className={'RoomCart'}>
                                     <div className={'Room-Photo'}>
 
-                                        <img src={"http://localhost:5000/static/"+ room.photo_path} alt="" width="400" height='300' />
+                                        <img src={"http://localhost:5000/static/"+ room.photo_path} key={room.id} alt="" />
                                     </div>
                                     <div className={'Main_info_Room'}>
                                         <div className={'Name-Room'}>{room.nameRoom}</div>
@@ -189,6 +188,18 @@ class HomePage extends Component {
                                                     className={"Reserved"}
                                                 >
                                                     This room is reserved
+                                                    <button
+                                                        className={`Control_Btn Delete`}
+                                                        onClick={() => {
+                                                            this.deleteRoom(room.id).then(() => {
+
+                                                            });
+                                                            this.componentDidMount();
+
+                                                        }}
+                                                    >
+                                                        Delete
+                                                    </button>
                                                 </div>
                                         }
                                         {

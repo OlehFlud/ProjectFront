@@ -23,12 +23,11 @@
     padding: 1rem 5rem 1rem 5rem;
 }
 
-.Room-Photo {
+.Room-Photo img{
     height: 300px;
     width: 300px;
     margin-left: 1rem;
     margin-top: 25px;
-    background: cadetblue;
 }
 
 .Main_info_Room {
