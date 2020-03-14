@@ -80,7 +80,7 @@ class HomePage extends Component {
     createRoom = () => {
 
         const data = new FormData();
-        data.append('file', this.state.fileName);
+        data.append('fileName', this.state.fileName);
         data.append('price', this.state.price);
         data.append('square', this.state.square);
         data.append('amount', this.state.amount);
@@ -133,7 +133,8 @@ class HomePage extends Component {
                             <div className={'Main'}>
                                 <li className={'RoomCart'}>
                                     <div className={'Room-Photo'}>
-                                        {/*Тут має бути фотка кімнати!*/}
+
+                                        <img src={"http://localhost:5000/static/"+ room.photo_path} alt="" width="400" height='300' />
                                     </div>
                                     <div className={'Main_info_Room'}>
                                         <div className={'Name-Room'}>{room.nameRoom}</div>
