@@ -55,6 +55,22 @@ export default class Header extends Component {
                 </Link>
 
 
+                <div className={"NavBar"}>
+
+                    <div className={'NavContainer '}>
+                        <ul className={'ulNav'}>
+                            <li>
+                                <Link to={`/`}>Готель Львів </Link>
+                            </li>
+                            <li>
+                                <Link to={`/roomList`}>Номера та ціни </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
                 {
                     localStorage.token ?
                         <div className={'Authentications_Box'}>
