@@ -33,7 +33,7 @@ export default class Login extends React.Component {
 
         login(user).then(res => {
             if (res) {
-                this.props.history.push(`/User?Name=${this.state.name}`)
+                this.props.history.push(`/?Name=${this.state.name}`)
             }
         })
     }

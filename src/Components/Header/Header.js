@@ -99,20 +99,7 @@ export default class Header extends Component {
                             >Sign up</Link>
                         </div>
                 }
-                {
-                    this.props.pushHomePage.location.pathname === `/Admin` && localStorage.token ?
 
-                        <div>
-                            <Link
-                                to={`/Users`}
-                                className={'Authentications_link'}
-                            >
-                                Users
-                            </Link>
-                        </div> : ''
-
-
-                }
                 {
                     localStorage.token ? <div className={'Welcome'}>Welcome {UserName.Name}!</div> : ''
                 }
