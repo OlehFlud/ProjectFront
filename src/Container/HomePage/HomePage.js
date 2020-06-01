@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import {Room} from "../../actions/getRoom";
 import Photo from '../../assets/westindtla.jpg'
 import './HomePage.css'
-
+import CarouselBox from "../../Components/CarouselBox";
+import Carousel from "react-bootstrap/Carousel";
 class HomePage extends Component {
     constructor(props) {
         super(props);
@@ -40,11 +41,8 @@ class HomePage extends Component {
             <div>
                 <Header pushHomePage={pushHomePage}/>
 
-                <img
-                    className={'Photo_Box'}
-                    src={Photo}
-                    alt="Photo"
-                />
+                <CarouselBox/>
+
                 <Footer/>
             </div>
         )

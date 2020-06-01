@@ -10,7 +10,6 @@ class UserInfo extends Component {
         this.props.fetchData("/user/findAllUser");
     }
 
-
     render() {
         return (
             <div>

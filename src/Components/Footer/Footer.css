@@ -1,12 +1,15 @@
 .footer{
     height: 5rem;
-    background: white;
+    background:  #5D4037;
     width: 100%;
-    border-top: 5px solid darkgoldenrod;
+    /*border-top: 5px solid darkgoldenrod;*/
     display: flex;
     align-items: center;
     justify-content: space-around;
-    box-shadow: 0 0 5px black ;
+    /*box-shadow: 0 0 5px black ;*/
+}
+.footer div{
+    color: white;
 }
 
 .contact_info{
@@ -15,8 +18,4 @@
     justify-content: space-around;
     height: 2rem;
     width: 25rem;
-}
-
-.Some_Info{
-
 }

@@ -14,7 +14,7 @@ export const Footer = () => {
             <div className={'Some_Info'}>
                 © 2019–2020, Premier Hotels and Resorts.<Link to={''}>Политика конфиденциальности.</Link>
             </div>
-            <div className={'contact_info'}>
+            <div className={'Some_Info'}>
                 Смотри, обсуждай, делись!
                 <InstagramIcon/>
                 <FacebookIcon/>

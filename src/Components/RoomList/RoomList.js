@@ -11,6 +11,12 @@ import Photo from '../../assets/westindtla.jpg'
 import '../../Container/HomePage/HomePage.css'
 import axios from "axios";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import BackgroundPhoto from '../../assets/IMG_5640RT.jpg'
+import {DateRangePicker, SingleDatePicker,DayPickerRangeController} from 'react-dates'
+import './RoomList.css'
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import * as PropTypes from "prop-types";
 
 class RoomList extends Component {
     constructor(props) {
@@ -26,13 +32,18 @@ class RoomList extends Component {
             park: '',
             fileName: null,
             errors: {},
-            search: ''
+            search: '',
+            startDate: null,
+            endDate: null,
+            startDateId: PropTypes.string.isRequired  ,
+            endDateId: PropTypes.string.isRequired
         };
 
         this.toggleDangerAlert = this.toggleDangerAlert.bind(this);
         this.toggleDangerAlertOff = this.toggleDangerAlertOff.bind(this);
         this.onChange = this.onChange.bind(this);
     }
+
 
     onChange(e) {
         this.setState({[e.target.name]: e.target.value})
@@ -124,15 +135,24 @@ class RoomList extends Component {
         const ShowBoxCreateRoom = ShowCreateRoom ? 'Hide' : 'createRoom';
 
         return (
-            <div>
+            <div className={'boooody'}>
                 <Header pushHomePage={pushHomePage}/>
                 <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} className="SearchInput"/>
 
                 {
                     localStorage.token ? Rooms.map((room) => {
                         return (
-                            <div className={'Main'}>
+                            <div className={'Main'} key={room.id} >
                                 <li className={'RoomCart'}>
+                                    {/*<DateRangePicker*/}
+                                    {/*    startDate={this.state.startDate} // momentPropTypes.momentObj or null,*/}
+                                    {/*    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,*/}
+                                    {/*    endDate={this.state.endDate} // momentPropTypes.momentObj or null,*/}
+                                    {/*    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,*/}
+                                    {/*    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,*/}
+                                    {/*    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,*/}
+                                    {/*    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,*/}
+                                    {/*/>*/}
                                     <div className={'Room-Photo'}>
 
                                         <img src={"http://localhost:5000/static/" + room.photo_path} alt=""/>
@@ -172,6 +192,7 @@ class RoomList extends Component {
                                     <div>
                                         <div className={'Price-Box'}>
                                             24h from: <div className={'Price_Room'}>{room.price} UAH
+
                                         </div>
 
                                         </div>

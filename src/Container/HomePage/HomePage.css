@@ -5,8 +5,9 @@
     border: 2px solid darkgoldenrod;
     border-radius: 0.2rem;
     margin-top: 0.7rem;
-    background: #f0f0f0;
-    color: black;
+    background: #212121;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     list-style: none;
     display: flex;
     box-shadow: 0 0 5px black;
@@ -23,7 +24,7 @@
     padding: 1rem 5rem 1rem 5rem;
 }
 
-.Room-Photo img{
+.Room-Photo img {
     height: 300px;
     width: 300px;
     margin-left: 1rem;
@@ -41,12 +42,12 @@
 .Price-Box {
     height: 80px;
     width: 210px;
-    border: 1px solid grey;
+    border: 1px solid white;
     border-radius: 0.3rem;
     background: none;
     margin-top: 25px;
     margin-right: 0.5rem;
-    color: black;
+    color: white;
     font-size: 1rem;
     font-family: "Comic Sans MS", sans-serif;
     display: flex;
@@ -61,7 +62,7 @@
 }
 
 .Param_Room {
-    color: black;
+    color: white;
     font-size: 1rem;
     font-family: "Times New Roman", sans-serif;
     margin: 0.3rem;
@@ -80,7 +81,7 @@
     padding: 0.2rem;
     font-size: 1rem;
     font-family: "Open Sans", sans-serif;
-    color: grey;
+    color: white;
 }
 
 .margin {
@@ -124,6 +125,7 @@
     padding-top: 0.75rem;
     box-shadow: 0 0 3px black;
 }
+
 .Delete {
     background: #a94240;
 }
@@ -185,7 +187,7 @@
 .price {
     width: 7rem;
     height: 2rem;
-    color: black;
+    color: white;
 }
 
 .default_input {
@@ -194,20 +196,22 @@
     border-bottom: 1px solid darkgoldenrod;
 }
 
-.about{
+.about {
     height: 4rem;
     width: 80%;
 }
 
-.Reserved{
+.Reserved {
     font-size: 2rem;
     font-family: "Open Sans", sans-serif;
-    color: black;
+    color: white;
     margin-left: 0.5rem;
 }
 
-.Main{
+.Main {
     padding-left: 5rem;
     padding-right: 5rem;
     padding-top: 2rem;
+
 }
+

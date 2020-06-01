@@ -55,19 +55,21 @@ export default class Header extends Component {
                 </Link>
 
 
-                <div className={"NavBar"}>
-
-                    <div className={'NavContainer '}>
+                <div className="NavBar">
                         <ul className={'ulNav'}>
                             <li>
-                                <Link to={`/`}>Готель Львів </Link>
+                                <Link className="Authentications_link"
+                                      to={`/`}>Готель Львів </Link>
                             </li>
                             <li>
-                                <Link to={`/roomList`}>Номера та ціни </Link>
+                                <Link className="Authentications_link"
+                                      to={`/roomList`}>Номера та ціни </Link>
+                            </li>
+                            <li>
+                                <Link className="Authentications_link"
+                                      to={`/AboutUs`}>Про нас</Link>
                             </li>
                         </ul>
-                    </div>
-
                 </div>
 
 
